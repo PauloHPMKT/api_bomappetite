@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 //mongo db conection - stabelishing connection api when database is up
 mongoose.connect('mongodb://localhost:27017/db-opjs')
-.then(() => {
+	.then(() => {
 		const app = express();
 		const PORT = 3008
 
@@ -12,4 +12,3 @@ mongoose.connect('mongodb://localhost:27017/db-opjs')
 		})
 	})
 	.catch(() => console.log('error conection'))
-
