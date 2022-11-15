@@ -1,10 +1,15 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import { router } from './router';
 
 //mongo db conection - stabelishing connection api when database is up
 mongoose.connect('mongodb://localhost:27017/db-opjs')
 	.then(() => {
 		const app = express();
+
+		app.use(express.json())
+		app.use(router);
+
 		const PORT = 3008
 
 		app.listen(PORT, () => {
