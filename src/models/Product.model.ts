@@ -8,10 +8,10 @@ export const Product = model('product', new Schema({
 	//salvando array no mongo
 	ingredient: {
 		required: true,
-		type: {
+		type: [{
 			name: { type: String, required:true },
 			icon: { type: String,  required: true },
-		}
+		}]
 	},
 	category: {
 		required: true,

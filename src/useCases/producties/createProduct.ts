@@ -18,11 +18,11 @@ export async function createProduct(req: Request, res: Response) {
 			description,
 			imagePath,
 			pricing: Number(pricing),
-			category,
 			ingredient: JSON.parse(ingredient),
+			category,
 		})
 
-		res.status(201).json(product)
+		res.status(201).json(product);
 	}
 	catch(error) {
 		console.error(error);
