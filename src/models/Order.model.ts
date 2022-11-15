@@ -16,15 +16,15 @@ export const Order = model('order', new Schema({
 	products: {
 		required: true,
 		type: [{
-			products: {
+			product: {
 				type: Schema.Types.ObjectId,
 				ref: 'product',
 				required: true,
 			},
+			quantity: {
+				type: Number,
+				default: 1,
+			},
 		}],
-	},
-	quantity: {
-		type: Number,
-		default: 1,
 	},
 }));
