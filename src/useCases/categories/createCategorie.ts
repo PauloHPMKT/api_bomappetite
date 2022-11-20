@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { io } from "../..";
 import { Category } from "../../models/Category.model";
 
 export async function createCategories(req: Request, res: Response) {
@@ -7,6 +8,7 @@ export async function createCategories(req: Request, res: Response) {
 
 		const category = await Category.create({ ...data });
 
+		io.emit('order-new')
 		res.status(201).json(category);
 	}
 	catch(error) {

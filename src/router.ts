@@ -40,7 +40,7 @@ router.get('/products', listProducts);
 router.post('/products', upload.single('image'), createProduct);
 
 //get products by category
-router.get('/categories/:id/products', listProductsByCategories);
+router.get('', listProductsByCategories);
 
 //list orders
 router.get('/orders', listOrders);
