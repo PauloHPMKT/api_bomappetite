@@ -9,14 +9,13 @@ const app = express();
 const server = http.createServer(app)
 export const io = new Server(server)
 
-
 //mongo db conection - stabelishing connection api when database is up
 mongoose.connect('mongodb://localhost:27017/db-opjs')
-	.then(() => {
+.then(() => {
 
-		io.on('connect', () => {
+		/*io.on('connection', () => {
 			console.log('Conectado');
-		})
+		})*/
 		//habilitando cors
 		app.use((req, res, next) => {
 			res.setHeader('Access-Control-Allow-Origin', '*')
