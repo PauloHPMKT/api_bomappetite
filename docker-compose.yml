@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  api:
+    build: .
+    container_name: api-food-square
+    ports:
+      - 3008:3008
+    volumes:
+      - ./:/usr/home/api-food-square
+    tty: true
+    networks:
+      - api-food-net
+
+  db:
+    image: mongo:4.4
+    container_name: mongo-db
+    ports:
+      - 27017:27017
+    volumes:
+      - /mongodb/dbdata:/data/db
+      - /mongodb/configdb:/data/configdb
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    environment:
+      MONGO_INITDB_DATABASE: food-square-db
+    networks:
+      - api-food-net
+
+networks:
+  api-food-net:
+    driver: bridge
