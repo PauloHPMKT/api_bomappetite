@@ -2,8 +2,8 @@ import express from 'express';
 import path from 'node:path';
 import http  from 'node:http';
 import { Server } from 'socket.io';
-import { router } from './router';
 import { dbConnection } from './db';
+import routers from './routers/index';
 
 const app = express();
 export const server = http.createServer(app)
@@ -22,6 +22,9 @@ app.use((req, res, next) => {
 
 	next();
 })
+
 app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')));
 app.use(express.json());
-app.use(router);
+
+// importing router instance
+app.use(routers);
