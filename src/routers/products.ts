@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import { createProduct } from "../useCases/producties/createProduct";
-import { listProducts } from "../useCases/producties/listProducts";
-import { listProductsByCategories } from '../useCases/categories/listProductsByCategories';
+import { createProduct } from "../controllers/producties/createProduct";
+import { listProducts } from "../controllers/producties/listProducts";
+import { listProductsByCategories } from '../controllers/categories/listProductsByCategories';
 
 import { upload } from '../middlewares/upload-middleware';
 
