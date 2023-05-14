@@ -7,10 +7,10 @@ services:
     ports:
       - 3008:3008
     volumes:
-      - ./:/usr/home/api-food-square
+      - ./:/usr/home/app/api-food-square
     tty: true
     networks:
-      - api-food-net
+      - food-square-network
 
   db:
     image: mongo:4.4
@@ -24,8 +24,8 @@ services:
     environment:
       MONGO_INITDB_DATABASE: food-square-db
     networks:
-      - api-food-net
+      - food-square-network
 
 networks:
-  api-food-net:
+  food-square-network:
     driver: bridge
