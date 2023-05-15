@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 //import { io } from "../..";
 import { Category } from "../../models/Category.model";
+import { Exceptions } from "../../../config/errors/exceptions";
 
 export async function createCategories(req: Request, res: Response) {
 	try {
@@ -14,5 +15,6 @@ export async function createCategories(req: Request, res: Response) {
 	catch(error) {
 		console.error(error);
 		res.sendStatus(500);
+		throw new Exceptions('Houve um erro ai, vai ver oq é!')
 	}
 }
