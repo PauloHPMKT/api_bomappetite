@@ -4,7 +4,7 @@ USER node
 
 WORKDIR /home/project_app/api
 
-COPY package*.json .
+COPY package*.json yarn.lock ./
 
 EXPOSE 3003
 
