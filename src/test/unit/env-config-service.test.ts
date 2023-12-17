@@ -81,6 +81,13 @@ describe('EnvConfigService', () => {
 		expect(typeof nodeEnv).not.toStrictEqual(['number', 'boolean']);
 	});
 
+	it('should test if NODE_ENV is null or undefined', () => {
+		const { sut } = makeSut();
+		const nodeEnv = sut.getNodeEnv();
+		expect(nodeEnv).not.toBeNull();
+		expect(nodeEnv).not.toBeUndefined();
+	});
+
 	it('should test getInstance should return the same instance for the same environment', () => {
 		const { serviceInstance } = makeSut();
 		const instance1 = serviceInstance.getInstance('test');
