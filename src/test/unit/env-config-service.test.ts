@@ -35,6 +35,8 @@ describe('EnvComfigService', () => {
 		const testUrl = 'mongodb://localhost:27017/test';
 		const mongoUrl = sut.getDbConnectionEnv(testUrl);
 		expect(mongoUrl).toStrictEqual('mongodb://localhost:27017/test');
+		expect(typeof testUrl).toStrictEqual('string');
+		expect(typeof testUrl).not.toMatch('number');
 	})
 
 	it('should return the correct value for the var NODE_ENV', () => {
