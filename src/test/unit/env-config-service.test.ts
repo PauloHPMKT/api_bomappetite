@@ -81,11 +81,12 @@ describe('EnvConfigService', () => {
 		expect(typeof nodeEnv).not.toStrictEqual(['number', 'boolean']);
 	});
 
-	it('should test if NODE_ENV is null or undefined', () => {
-		const { sut } = makeSut();
+	it('should test getNodeEnv return NODE_ENV when defined', () => {
+		let mockEnv = (process.env.NODE_ENV = 'production');
+		const { sut } = makeSut('test');
 		const nodeEnv = sut.getNodeEnv();
-		expect(nodeEnv).not.toBeNull();
-		expect(nodeEnv).not.toBeUndefined();
+		expect(nodeEnv).toStrictEqual(mockEnv);
+		mockEnv = 'test';
 	});
 
 	it('should test getInstance should return the same instance for the same environment', () => {
