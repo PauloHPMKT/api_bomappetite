@@ -23,6 +23,12 @@ describe('EnvComfigService', () => {
 		expect(port).not.toStrictEqual(3000 | 3001);
 	});
 
+	it('should return the correct type for the var PORT', () => {
+		const sut = makeSut();
+		const port = sut.getAppPort();
+		expect(typeof port).toStrictEqual('number');
+	});
+
 	it('should return the correct value for the var DB_CONNECTION', () => {
 		const sut = makeSut();
 		const testUrl = 'mongodb://localhost:27017/test';
@@ -35,6 +41,6 @@ describe('EnvComfigService', () => {
 		const nodeEnv = sut.getNodeEnv();
 		expect(nodeEnv).toStrictEqual('test');
 	});
-});;
+});
 
 
