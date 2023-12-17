@@ -6,7 +6,8 @@ const makeSut = (env?: string) => {
 }
 
 describe('EnvComfigService', () => {
-	it('should be defined', () => {
-		expect(true).toBeTruthy();
+	it('should test an instance sut is defined', () => {
+		const sut = makeSut();
+		expect(sut).toBeTruthy();
 	});
 });
