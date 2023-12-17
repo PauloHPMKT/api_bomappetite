@@ -34,6 +34,13 @@ describe('EnvConfigService', () => {
 		expect(typeof port).not.toStrictEqual(['string', 'boolean']);
 	});
 
+	it('should test if PORT is null or undefined', () => {
+		const { sut } = makeSut();
+		const port = sut.getAppPort();
+		expect(port).not.toBeNull();
+		expect(port).not.toBeUndefined();
+	});
+
 	it('should return the correct value for the var DB_CONNECTION', () => {
 		const { sut } = makeSut();
 		const testUrl = 'mongodb://localhost:27017/test';
