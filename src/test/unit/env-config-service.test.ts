@@ -50,6 +50,14 @@ describe('EnvConfigService', () => {
 		expect(typeof testUrl).not.toMatch('number');
 	})
 
+	it('should test if DB_CONNECTION is null or undefined', () => {
+		const { sut } = makeSut();
+		const testUrl = 'mongodb://localhost:27017/test';
+		const mongoUrl = sut.getDbConnectionEnv(testUrl);
+		expect(mongoUrl).not.toBeNull();
+		expect(mongoUrl).not.toBeUndefined();
+	});
+
 	it('should return the correct value for the var NODE_ENV', () => {
 		const { sut } = makeSut();
 		const nodeEnv = sut.getNodeEnv();
