@@ -1,9 +1,9 @@
 import express, { Application } from 'express';
 import path from 'node:path';
 import http  from 'node:http';
-import mongoose from 'mongoose';
 import { Server } from 'socket.io';
 import { router } from './router';
+import { dbConnect } from './infra/database';
 
 export class App {
 	private server = http.createServer(this.app);
@@ -23,10 +23,7 @@ export class App {
 	}
 
 	private database() {
-		mongoose
-			.connect(process.env.DB_CONNECTION as string)
-			.then(() => console.log('Database is connected'))
-			.catch(() => console.log('Database is not connected'));
+		dbConnect();
 	}
 
 	private routes() {
