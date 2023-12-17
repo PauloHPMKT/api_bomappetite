@@ -15,6 +15,12 @@ describe('EnvComfigService', () => {
 		const sut = makeSut();
 		expect(sut).toBeInstanceOf(EnvConfigService);
 	});
+
+	it('should return the correct value for the var PORT', () => {
+		const sut = makeSut();
+		const port = sut.getAppPort();
+		expect(port).toStrictEqual(3003);
+	});
 });
 
 
