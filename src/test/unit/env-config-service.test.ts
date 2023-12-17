@@ -9,7 +9,7 @@ const makeSut = (env?: string) => {
 	};
 }
 
-describe('EnvComfigService', () => {
+describe('EnvConfigService', () => {
 	it('should test an instance sut is defined', () => {
 		const { sut } = makeSut();
 		expect(sut).toBeTruthy();
@@ -73,11 +73,16 @@ describe('EnvComfigService', () => {
 		expect(instance1).toEqual(instance2);
 	});
 
-	it('should test getInstance should return differents instances for the diferents environment', () => {
+	it('should throw an error when calling getInstance without passing an environment', () => {
 		const { serviceInstance } = makeSut();
-		const instance1 = serviceInstance.getInstance('test');
-		const instance2 = serviceInstance.getInstance('production');
-		expect(instance1).toEqual(instance2);
+		const environments = ['development', 'test', 'production'];
+		const notDefinedEnvironments = ['', null];
+
+		notDefinedEnvironments.forEach((env) => {
+			if (!environments.includes(env as string)) {
+				expect(() => serviceInstance.getInstance(env as string)).toThrow();
+			}
+		});
 	});
 });
 
