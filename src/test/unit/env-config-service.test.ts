@@ -29,6 +29,12 @@ describe('EnvComfigService', () => {
 		const mongoUrl = sut.getDbConnectionEnv(testUrl);
 		expect(mongoUrl).toStrictEqual('mongodb://localhost:27017/test');
 	})
+
+	it('should return the correct value for the var NODE_ENV', () => {
+		const sut = makeSut();
+		const nodeEnv = sut.getNodeEnv();
+		expect(nodeEnv).toStrictEqual('test');
+	});
 });;
 
 
