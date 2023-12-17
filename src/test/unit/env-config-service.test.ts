@@ -44,6 +44,12 @@ describe('EnvComfigService', () => {
 		const nodeEnv = sut.getNodeEnv();
 		expect(nodeEnv).toStrictEqual('test');
 	});
+
+	it('should test getInstance should return the same instance for the same environment', () => {
+		const sut = EnvConfigService.getInstance('test');
+		const sut2 = EnvConfigService.getInstance('test');
+		expect(sut).toEqual(sut2);
+	});
 });
 
 
