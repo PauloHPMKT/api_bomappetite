@@ -16,6 +16,7 @@ export class EnvConfigService implements EnvConfig {
 	private static instance: EnvConfigService;
 	public static getInstance(environment: string): EnvConfigService {
 		if (!this.instance) return this.instance = new EnvConfigService(environment);
+		else if (environment === '' || environment === null) throw new Error('Environment is not defined');
 		return this.instance;
 	}
 
