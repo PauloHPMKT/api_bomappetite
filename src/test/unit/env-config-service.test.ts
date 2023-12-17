@@ -49,6 +49,16 @@ describe('EnvComfigService', () => {
 		expect(nodeEnv).toStrictEqual('test');
 	});
 
+	it('should test environment return a value when NODE_ENV is defined', () => {
+		const environment = (process.env.NODE_ENV = 'development')
+		const { sut } = makeSut(environment);
+		const nodeEnv = sut.getNodeEnv();
+		expect(nodeEnv).toBeDefined();
+		expect(nodeEnv).toStrictEqual(environment);
+
+		process.env.NODE_ENV = 'test';
+	});
+
 	it('should test getInstance should return the same instance for the same environment', () => {
 		const { serviceInstance } = makeSut();
 		const instance1 = serviceInstance.getInstance('test');
