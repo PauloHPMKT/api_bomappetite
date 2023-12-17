@@ -10,4 +10,11 @@ describe('EnvComfigService', () => {
 		const sut = makeSut();
 		expect(sut).toBeTruthy();
 	});
+
+	it('shoul create an instance of EnvConfigService', () => {
+		const sut = makeSut();
+		expect(sut).toBeInstanceOf(EnvConfigService);
+	});
 });
+
+
