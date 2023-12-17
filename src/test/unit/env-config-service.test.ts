@@ -27,6 +27,7 @@ describe('EnvComfigService', () => {
 		const sut = makeSut();
 		const port = sut.getAppPort();
 		expect(typeof port).toStrictEqual('number');
+		expect(typeof port).not.toStrictEqual(['string', 'boolean']);
 	});
 
 	it('should return the correct value for the var DB_CONNECTION', () => {
