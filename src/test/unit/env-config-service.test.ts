@@ -111,8 +111,20 @@ describe('EnvConfigService', () => {
 		const { sut } = makeSut();
 		const envFile = sut['envFile'];
 		expect(envFile).toBeDefined();
-		expect(envFile).toStrictEqual('env.test');
-		expect(envFile).not.toStrictEqual('env');
+		expect(envFile).toStrictEqual('.env.test');
+		expect(envFile).not.toStrictEqual(['.env', '.env.development']);
+	});
+
+	it('should test envFile is defined when environment is production', () => {
+		const { sut } = makeSut('production');
+		const envFileProd = sut['envFile'];
+		expect(envFileProd).toStrictEqual('.env');
+	});
+
+	it('should test envFile is defined when environment is development', () => {
+		const { sut } = makeSut('development');
+		const envFileProd = sut['envFile'];
+		expect(envFileProd).toStrictEqual('.env.development');
 	});
 });
 
