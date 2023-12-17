@@ -59,6 +59,13 @@ describe('EnvComfigService', () => {
 		process.env.NODE_ENV = 'test';
 	});
 
+	it('should test return the correct type for NODE_ENV', () => {
+		const { sut } = makeSut();
+		const nodeEnv = sut.getNodeEnv();
+		expect(typeof nodeEnv).toStrictEqual('string');
+		expect(typeof nodeEnv).not.toStrictEqual(['number', 'boolean']);
+	});
+
 	it('should test getInstance should return the same instance for the same environment', () => {
 		const { serviceInstance } = makeSut();
 		const instance1 = serviceInstance.getInstance('test');
