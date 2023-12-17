@@ -106,6 +106,14 @@ describe('EnvConfigService', () => {
 			}
 		});
 	});
+
+	it('should test envFile is defined', () => {
+		const { sut } = makeSut();
+		const envFile = sut['envFile'];
+		expect(envFile).toBeDefined();
+		expect(envFile).toStrictEqual('env.test');
+		expect(envFile).not.toStrictEqual('env');
+	});
 });
 
 
