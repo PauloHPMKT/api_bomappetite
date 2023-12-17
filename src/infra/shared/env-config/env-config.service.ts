@@ -26,7 +26,7 @@ export class EnvConfigService implements EnvConfig {
 	getNodeEnv(): string {
 		return process.env.NODE_ENV ?? this.environment;
 	}
-	getDbConnectionEnv(uri: string): string {
+	getDbConnectionEnv(uri: string = ''): string {
 		return process.env.DB_CONNECTION ?? uri;
 	}
 }
