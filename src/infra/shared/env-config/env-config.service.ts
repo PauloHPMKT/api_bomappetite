@@ -7,9 +7,9 @@ export class EnvConfigService implements EnvConfig {
 		private readonly environment: string,
 		private readonly envFile?: string,
 	) {
-		this.envFile = this.environment === 'production' ? 'env' : `env.${this.environment}`;
+		this.envFile = this.environment === 'production' ? '.env' : `.env.${this.environment}`;
 		dotenv.config({
-			path: join(__dirname, `../../../../.${this.envFile}`),
+			path: join(__dirname, `../../../../${this.envFile}`),
 		});
 	}
 
