@@ -50,6 +50,12 @@ describe('EnvComfigService', () => {
 		const sut2 = EnvConfigService.getInstance('test');
 		expect(sut).toEqual(sut2);
 	});
+
+	it('should test getInstance should return differents instances for the diferents environment', () => {
+		const sut = EnvConfigService.getInstance('test');
+		const sut2 = EnvConfigService.getInstance('production');
+		expect(sut).toEqual(sut2);
+	});
 });
 
 
